@@ -1,2 +1,10 @@
 <%= render 'layouts/navbar' %>
 
+<div class="container">
+  <div class="row">
+    <div class="info-card">
+      Name: <%= "#{@user.first_name} #{@user.last_name}" %>
+      Country: <%= "#{@user.country}" %>
+    </div>
+  </div>
+</div>

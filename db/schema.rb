@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20170709123535) do
     t.string   "first_name",             default: ""
     t.string   "last_name",              default: ""
     t.string   "username"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

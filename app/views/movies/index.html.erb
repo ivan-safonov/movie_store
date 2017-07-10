@@ -1,11 +1,21 @@
 <%= render 'layouts/navbar' %>
 
+
 <div class="container">
   <div class="row">
 
-    <!--<p id="notice"><%= notice %></p>-->
+    <% if @movies.blank? %>
+        <div class="info-card">
+          <h4> There is no movies yet...</h4>
+        </div>
+    <% end %>
 
-    <!--<%= link_to 'New Movie', new_movie_path, class: 'btn btn-primary' %>-->
+    <p id="notice"><%= notice %></p>
+
+    <div class="info-card">
+      <h4 id="header-txt">Recent Movies:</h4>
+      <%= link_to 'Add Movie', new_movie_path, class: 'btn btn-primary', id: 'right-button' %>
+    </div>
 
     <% @movies.each do |movie| %>
 

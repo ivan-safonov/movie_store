@@ -4,6 +4,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :first_name, default: ""
       t.string :last_name, default: ""
       t.string :username
+      t.string :country
+      t.string :state
+      t.string :city
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

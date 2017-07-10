@@ -40,6 +40,24 @@
             <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
           </div><br>
 
+          <p>This is data from Geolocation. You are from: </p>
+          <div class="field">
+            <!--<label for="geo-country" class="control-label">Country</label>-->
+            <!--<input name=user[country] class="form-control" id="geo-country" type="text" disabled>-->
+            <%= f.label :country %>
+            <%= f.text_field :country, class: "form-control", disabled: true%>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :state %>
+            <%= f.text_field :state, class: "form-control", disabled: true%>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :city %>
+            <%= f.text_field :city, class: "form-control", disabled: true %>
+          </div><br>
+
           <div class="actions">
             <%= f.submit "Sign up", class: "btn btn-primary" %>
             <%= render "devise/shared/links" %>
@@ -50,6 +68,11 @@
   </div>
 </div>
 
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+      getGeolocation();
+  })
+</script>
 
 
 

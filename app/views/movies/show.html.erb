@@ -19,9 +19,18 @@
       <%= link_to 'Back', movies_path %>
     </div>
 
-    <h3>Reviews:</h3>
+    <!--<td> <%# link_to 'Add Review', new_user_review_path(current_user), mv_id: @movie.id %> </td>-->
 
-    <%= link_to 'Add Review', new_user_review_path(current_user), mv_id: @movie.id %>
+    <div class="info-card">
+      <h4 id="header-txt">Reviews:</h4>
+      <%= link_to 'Add Review', new_movie_review_path(@movie), mv_id: @movie.id, class: 'btn btn-primary', id: 'right-button' %>
+    </div>
+
+    <% if @movie.reviews.blank? %>
+        <div class="info-card">
+          <h4> There is no reviews yet...</h4>
+        </div>
+    <% end %>
 
     <% @movie.reviews.each do |review| %>
 
