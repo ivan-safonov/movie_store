@@ -39,9 +39,7 @@ gem 'bootstrap-sass'
 
 gem 'social-share-button'
 
-gem 'ratyrate'
-
-gem 'geocoder'
+gem 'statistics2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

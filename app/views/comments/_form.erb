@@ -1,0 +1,17 @@
+<div class="info-card">
+  <%= form_for [user, comment] do |f| %>
+
+      <div class="field">
+        <%= f.hidden_field :review_id, value: rev_id %>
+      </div>
+
+      <div class="field">
+        <%= f.label :txt, "Leave a comment" %>
+        <%= f.text_area :txt, class: "form-control", rows: 5 %>
+      </div>      <br>
+
+      <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+  <% end %>
+</div>

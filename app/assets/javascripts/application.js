@@ -12,6 +12,26 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery.raty
 //= require jquery_ujs
+//= require social-share-button
 //= require turbolinks
 //= require_tree .
+
+
+function removeAppEvents() {
+    removeReviewsEvents();
+    removeMoviesEvents();
+}
+
+function addAppEvents() {
+    initMovieRatingBar();
+    initReviewRatingBar();
+}
+
+$(document).on('turbolinks:load', function() {
+    removeAppEvents();
+    addAppEvents();
+});
+
+

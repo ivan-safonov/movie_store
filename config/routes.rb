@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   root to: "movies#index"
 
   resources :movies do
-    resources :reviews
+    resources :reviews, only: [:new, :create]
   end
 
-  resources :users
+  resources :users do
+    resources :reviews, only: [:show]
+    resources :comments
+
+  end
+
+  post 'upvote', to: 'votes#upvote', as: 'upvote'
+  post 'downvote', to: 'votes#downvote', as: 'downvote'
 end

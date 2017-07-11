@@ -1,13 +1,20 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_movie
+  before_action :set_movie, except: [:show]
 
   def new
+    # if user reviewed it already
+    unless (review = Review.find_by(user_id: current_user.id, movie_id: @movie.id)).blank?
+      redirect_to user_review_path(current_user.id, review.id), notice: "You've reviewed this movie!"
+    end
     @review = Review.new
   end
 
   def show
-
+    @data = { review: review = Review.find(params[:id]),
+              review_score: (ci_lower_bound review.upvotes.count, review.upvotes.count + review.downvotes.count, 0.95),
+              comment: Comment.new,
+              comments: Comment.where(review_id: review.id) }
   end
 
   def create
@@ -17,7 +24,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to [@movie, @review] , notice: 'Review was successfully created.' }
+        format.html { redirect_to [current_user, @review] , notice: 'Review was successfully created.' }
       else
         format.html { render :new }
       end
@@ -37,6 +44,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :comment)
+    params.require(:review).permit(:rating, :comment, :subtitle)
   end
 end

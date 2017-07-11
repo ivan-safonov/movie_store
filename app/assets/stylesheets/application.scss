@@ -1,10 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-@font-face {
-  font-family: 'Lily Script One';
-  src: asset_url("LilyScriptOne-Regular.ttf") format("truetype");
-}
+@import "social-share-button";
 
 body {
   background: image_url('exp.jpeg');
@@ -27,7 +23,7 @@ body {
 }
 
 .navbar-brand {
-  font-family: 'Lily Script One', sans-serif;
+  font-family: 'Lily Script One', cursive;
   font-size: 26px;
   color: #fff;
 }
@@ -35,7 +31,7 @@ body {
 .info-card {
   width:100%;
   height:100%;
-  margin-top: 25px;
+  margin-top: 20px;
   background: white;
   padding: 40px;
   border-radius: 5px;
@@ -50,6 +46,25 @@ body {
 
 .img-movie-cover {
   border: black solid 1px;
-  width: 100px;
+  width: 110px;
   height: 150px;
+  margin-left: 30px;
+}
+.movie-info, .cover{
+  display: inline-block;
+}
+.movie-info{
+  ul {
+    list-style-type: none;
+  }
+  li{
+    padding: 10px;
+  }
+}
+.review-subtitle{
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.inline-obj{
+  display: inline-block;
 }

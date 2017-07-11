@@ -14,21 +14,26 @@
 
     <div class="info-card">
       <h4 id="header-txt">Recent Movies:</h4>
-      <%= link_to 'Add Movie', new_movie_path, class: 'btn btn-primary', id: 'right-button' %>
+      <!--<%= link_to 'Add Movie', new_movie_path, class: 'btn btn-primary', id: 'right-button' %>-->
     </div>
 
     <% @movies.each do |movie| %>
-
         <div class="info-card">
 
-          <img src="<%= asset_url 'movie.jpg' %>" alt="" class="img-movie-cover">
-          <h6><%= movie.name %></h6>
-          <%= link_to 'Show', movie, class: 'btn btn-success' %>
-          <!--<td><%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-warning' %></td>-->
-          <!--<td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%></td>-->
+          <div class="cover col-md-2">
+            <img src="<%= asset_url 'movie.jpg' %>" alt="" class="img-movie-cover">
+          </div>
+          <div class="movie-info col-md-10" style="display: inline-block">
+            <ul>
+              <li> <strong>Title:</strong><%= link_to  movie.name, movie, class: 'movie-link' %> </li>
+              <li> <strong>Genre:</strong><%= movie.genre %></li>
+              <li> <strong>Release Date:</strong><%= movie.released %></li>
+            </ul>
+            <!--<td><%= link_to 'Edit', edit_movie_path(movie), class: 'btn btn-warning' %></td>-->
+            <!--<td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%></td>-->
+          </div>
 
         </div>
-
     <% end %>
 
   </div>

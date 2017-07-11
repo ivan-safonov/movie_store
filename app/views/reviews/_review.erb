@@ -1,0 +1,39 @@
+<div class="info-card">
+  <div class="inline-obj">
+    <div class="star-rating" data-score= <%= review.rating %> data-turbolinks="false"></div>
+    <p>
+      <%= link_to get_user(review.user_id).get_fullname, user_path(get_user review.user_id) %>
+    </p>
+  </div>
+
+
+  <div class="inline-obj" style="float: right">
+    <%= review.upvotes.count %>
+    <%= link_to "+", upvote_path + "?review_id=#{review.id}&user_id=#{current_user.id}", remote: true, method: :post %>
+    |
+    <%= link_to "-", downvote_path + "?review_id=#{review.id}&user_id=#{current_user.id}", remote: true, class: ("" + "#{  }"), method: :post %>
+    <%= review.downvotes.count %>
+    <br>
+
+    <strong>Total review score: </strong><%= score %>
+  </div>
+
+  <div class="review">
+    <div class="text-center">
+      <h6 class="review-subtitle"> <%= link_to review.subtitle, user_review_path(current_user, review.id) %> </h6>
+    </div>
+
+    <p><%= review.comment %></p>
+
+    <div class="inline-obj">
+      <%= social_share_button_tag("Read review on Movie Store '#{review.subtitle}' ",
+                                  { allow_sites: %w(twitter facebook), url: user_review_url(current_user, review), class: 'inline-ojb'} ) %>
+    </div>
+
+    <div class="inline-obj" style="float: right">
+      <%= link_to 'Comments', user_review_path(current_user, review.id) + "#comments" %>
+    </div>
+
+  </div>
+
+</div>
